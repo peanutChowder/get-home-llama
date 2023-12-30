@@ -1,6 +1,6 @@
 const mapRouter = require('express').Router()
 
-mapRouter.get("/", async (req, res) => {
+mapRouter.get("/", async (request, response) => {
     return response.json("hi there")
 })
 

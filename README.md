@@ -18,6 +18,7 @@ Activation
 - Activation should be a big, easy to click button. Only final address is needed.
 
 Map tracking
+- Get the user's location with the geolocation API
 - Use google routes API to determine the route as a polyline. Check every n minutes if the user is within a threshold of the polyline.
 - Ensure the user has reached home within a threshold of the estimated arrival home time.
 - If user is off course, they will receive a notification about off course. User can either force ignore (override), or no response - then friends will be contacted. see below

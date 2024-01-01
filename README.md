@@ -28,3 +28,8 @@ Considerations for modes of transport
 
 ### 2. Allow user friends to see the user's location. If any of the above conditions are broken, friends will receive a text. 
 
+Limiting location sharing
+- Potential solutions for limiting location sharing:
+    1. Provide a securely generated link that can be shared with anyone
+    2. Require sign-ins for those receiving the location
+

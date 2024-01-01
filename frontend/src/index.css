@@ -5,3 +5,8 @@
 
   background-color: var(--global-background);
 }
+
+* {
+  margin: 0;
+  padding: 0;
+}

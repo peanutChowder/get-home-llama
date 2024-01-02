@@ -31,5 +31,6 @@ Considerations for modes of transport
 Limiting location sharing
 - Potential solutions for limiting location sharing:
     1. Provide a securely generated link that can be shared with anyone
-    2. Require sign-ins for those receiving the location
+      - Provide a way to remove location sharing from a link. e.g. in case of sharing with the wrong person.
+    3. Require sign-ins for those receiving the location
 

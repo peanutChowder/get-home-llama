@@ -4,6 +4,33 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+@media (min-width: 750px) {
+    .container.nav-container > :is(.checkbox, .hamburger-lines, .logo) {
+        display: none;
+    }
+
+    .container.nav-container {
+        display: flex;
+    }
+
+    .container.nav-container > .menu-items {
+        flex-direction: row;
+        transform: none;
+        height: fit-content;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container.nav-container .menu-items > li {
+        height: fit-content;
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
 .container {
     max-width: 1050px;
     width: 90%;

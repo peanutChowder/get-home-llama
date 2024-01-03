@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import HamburgerMenu from "../components/HamburgerMenu"
-import { APIProvider, Map, Marker, useMapsLibrary } from '@vis.gl/react-google-maps'
+import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps'
 
+import HamburgerMenu from "../components/HamburgerMenu"
+import Directions from "../components/Directions"
 
 import './MainPage.css'
 
@@ -31,6 +32,8 @@ const MainPage = () => {
                     <div className="map-container">
                         <Map zoom={zoom} center={currLocation}>
                             <Marker position={currLocation}/>
+
+                            <Directions/>
                         </Map>
                     </div>
                 </APIProvider>

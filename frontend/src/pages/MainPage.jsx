@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react"
 import HamburgerMenu from "../components/HamburgerMenu"
-import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps'
+import { APIProvider, Map, Marker, useMapsLibrary } from '@vis.gl/react-google-maps'
+
 
 import './MainPage.css'
 
 const MainPage = () => {
-    const [currLocation, setCurrLocation] = useState({lat: 0, lon: 0})
+    const [currLocation, setCurrLocation] = useState({lat: 0, lng: 0})
     const [zoom, setZoom] = useState(1)
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((pos) => {
             setCurrLocation({
                 lat: pos.coords.latitude,
-                lon: pos.coords.longitude
+                lng: pos.coords.longitude
             })
         })
 
@@ -28,8 +29,8 @@ const MainPage = () => {
             <div id="main-page-content">
                 <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
                     <div className="map-container">
-                        <Map zoom={zoom} center={{lat: currLocation.lat, lng: currLocation.lon}}>
-                            <Marker position={{lat: currLocation.lat, lng: currLocation.lon}}/>
+                        <Map zoom={zoom} center={currLocation}>
+                            <Marker position={currLocation}/>
                         </Map>
                     </div>
                 </APIProvider>

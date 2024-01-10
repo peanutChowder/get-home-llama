@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@reach/combobox": "^0.18.0"
+    "@reach/combobox": "^0.18.0",
+    "use-places-autocomplete": "^4.0.1"
   }
 }

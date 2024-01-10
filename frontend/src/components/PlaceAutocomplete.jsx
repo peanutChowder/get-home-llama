@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import {
     Combobox,
     ComboboxInput,
@@ -6,27 +6,61 @@ import {
     ComboboxList,
     ComboboxOption
 } from "@reach/combobox"
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
+import "@reach/combobox/styles.css"
+import {  useLoadScript, Marker } from "@react-google-maps/api"
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete"
+
+const libraries = ["places"]
 
 const PlaceAutoComplete = () => {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-        libraries: ["places"]
+        libraries: libraries
     })
-    const { 
-        ready, 
-        value, 
-        setValue, 
-        suggestions: {status, data}, 
-        clearSuggestions
-    } = usePlacesAutocomplete()
+
+    if (!isLoaded) {
+        return <div>Loading..</div>
+    }
+    return (
+        <div>
+            <PlacesAutocomplete/>
+        </div>
+        
+    )
+}
+
+const PlacesAutocomplete = () => {
+    const {
+        ready,
+        value,
+        suggestions: { status, data },
+        setValue,
+        clearSuggestions,
+      } = usePlacesAutocomplete()
 
     return (
         <div>
-            <Combobox>
-                <ComboboxInput/>
-            </Combobox>
+
+        <Combobox>
+            <ComboboxInput 
+                value={value}
+                onChange={e => setValue(e.target.value)}
+                disabled={!ready}
+                placeholder="address here"
+            />
+            <ComboboxPopover>
+                <ComboboxList>
+                    {status === "OK" && data.map(({place_id, description}) => (
+                        <ComboboxOption key={place_id} value={description}/>
+                        ))}
+                </ComboboxList>
+            </ComboboxPopover>
+        </Combobox>
+
+        
         </div>
     )
 }
+
+
+export default PlaceAutoComplete

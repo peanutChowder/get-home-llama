@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps"
 import { useEffect, useState } from "react"
 
@@ -41,6 +42,12 @@ const Directions = ({origin, destination, show}) => {
     
 
     return null
+}
+
+Directions.propTypes = {
+    origin: PropTypes.object,
+    destination: PropTypes.object,
+    show: PropTypes.bool
 }
 
 export default Directions

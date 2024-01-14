@@ -36,7 +36,7 @@ const MainPage = () => {
                         <Map zoom={zoom} center={currLocation}>
                             <Marker position={currLocation}/>
                             <Directions
-                                origin={origin}
+                                origin={currLocation}
                                 destination={destination}
                                 show={showDirections}
                             />

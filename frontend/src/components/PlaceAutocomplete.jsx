@@ -38,16 +38,27 @@ const PlacesAutocomplete = () => {
         clearSuggestions,
     } = usePlacesAutocomplete()
 
-    const handleAutocompleteTextChange = (e) => {
+    const handleChange = (e) => {
         setValue(e.target.value)
+    }
+
+    const handleSelect = async (address) => {
+        setValue(address, false)
+        clearSuggestions()
+
+        const res = await getGeocode({ address })
+        const {lat, lng} = await getLatLng(res[0])
+
+        console.log(lat, lng);
+        
     }
 
     return (
         <div>
-            <Combobox>
+            <Combobox onSelect={handleSelect}>
                 <ComboboxInput
                     value={value}
-                    onChange={handleAutocompleteTextChange}
+                    onChange={handleChange}
                     disabled={!ready}
                     placeholder="address here"
                 />

@@ -7,7 +7,7 @@ import {
     ComboboxOption
 } from "@reach/combobox"
 import "@reach/combobox/styles.css"
-import {  useLoadScript, Marker } from "@react-google-maps/api"
+import { useLoadScript, Marker } from "@react-google-maps/api"
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete"
 
 const libraries = ["places"]
@@ -23,9 +23,9 @@ const PlaceAutoComplete = () => {
     }
     return (
         <div>
-            <PlacesAutocomplete/>
+            <PlacesAutocomplete />
         </div>
-        
+
     )
 }
 
@@ -36,28 +36,29 @@ const PlacesAutocomplete = () => {
         suggestions: { status, data },
         setValue,
         clearSuggestions,
-      } = usePlacesAutocomplete()
+    } = usePlacesAutocomplete()
+
+    const handleAutocompleteTextChange = (e) => {
+        setValue(e.target.value)
+    }
 
     return (
         <div>
-
-        <Combobox>
-            <ComboboxInput 
-                value={value}
-                onChange={e => setValue(e.target.value)}
-                disabled={!ready}
-                placeholder="address here"
-            />
-            <ComboboxPopover>
-                <ComboboxList>
-                    {status === "OK" && data.map(({place_id, description}) => (
-                        <ComboboxOption key={place_id} value={description}/>
+            <Combobox>
+                <ComboboxInput
+                    value={value}
+                    onChange={handleAutocompleteTextChange}
+                    disabled={!ready}
+                    placeholder="address here"
+                />
+                <ComboboxPopover>
+                    <ComboboxList>
+                        {status === "OK" && data.map(({ place_id, description }) => (
+                            <ComboboxOption key={place_id} value={description} />
                         ))}
-                </ComboboxList>
-            </ComboboxPopover>
-        </Combobox>
-
-        
+                    </ComboboxList>
+                </ComboboxPopover>
+            </Combobox>
         </div>
     )
 }

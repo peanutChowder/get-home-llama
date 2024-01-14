@@ -8,7 +8,7 @@ import {
     ComboboxOption
 } from "@reach/combobox"
 import "@reach/combobox/styles.css"
-import { useLoadScript, Marker } from "@react-google-maps/api"
+import { useLoadScript } from "@react-google-maps/api"
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete"
 
 const libraries = ["places"]
@@ -24,13 +24,16 @@ const PlaceAutoComplete = ({ setShowDirections, setDestination }) => {
     }
     return (
         <div>
-            <PlacesAutocomplete />
+            <PlacesAutocomplete 
+                setShowDirections={setShowDirections}
+                setDestination={setDestination}
+            />
         </div>
 
     )
 }
 
-const PlacesAutocomplete = () => {
+const PlacesAutocomplete = ({ setShowDirections, setDestination }) => {
     const {
         ready,
         value,
@@ -49,8 +52,13 @@ const PlacesAutocomplete = () => {
 
         const res = await getGeocode({ address })
         const {lat, lng} = await getLatLng(res[0])
+        
+        setDestination({
+            lat: lat,
+            lng: lng
+        })
 
-        console.log(lat, lng);
+        setShowDirections(true)
         
     }
 

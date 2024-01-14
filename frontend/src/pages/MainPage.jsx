@@ -43,7 +43,10 @@ const MainPage = () => {
                         </Map>       
                     </div>
                 </APIProvider>
-                <PlaceAutoComplete/>
+                <PlaceAutoComplete
+                    setShowDirections={setShowDirections}
+                    setDestination={setDestination}
+                />
             </div>
         </div>
 

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import { useState, useMemo } from "react"
 import {
     Combobox,
@@ -12,7 +13,7 @@ import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocom
 
 const libraries = ["places"]
 
-const PlaceAutoComplete = () => {
+const PlaceAutoComplete = ({ setShowDirections, setDestination }) => {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
         libraries: libraries
@@ -74,5 +75,10 @@ const PlacesAutocomplete = () => {
     )
 }
 
+
+PlaceAutoComplete.propTypes = {
+    setDestination: PropTypes.func.isRequired,
+    setShowDirections: PropTypes.func.isRequired
+}
 
 export default PlaceAutoComplete

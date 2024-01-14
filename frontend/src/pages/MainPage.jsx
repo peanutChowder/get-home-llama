@@ -9,6 +9,8 @@ import './MainPage.css'
 
 const MainPage = () => {
     const [currLocation, setCurrLocation] = useState({lat: 0, lng: 0})
+    const [destination, setDestination] = useState({lat: 0, lng: 0})
+    const [showDirections, setShowDirections] = useState(false)
     const [zoom, setZoom] = useState(1)
 
     useEffect(() => {
@@ -33,8 +35,11 @@ const MainPage = () => {
                     <div className="map-container">
                         <Map zoom={zoom} center={currLocation}>
                             <Marker position={currLocation}/>
-
-                            <Directions/>
+                            <Directions
+                                origin={origin}
+                                destination={destination}
+                                show={showDirections}
+                            />
                         </Map>       
                     </div>
                 </APIProvider>

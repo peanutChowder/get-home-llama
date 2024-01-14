@@ -1,7 +1,7 @@
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps"
 import { useEffect, useState } from "react"
 
-const Directions = () => {
+const Directions = ({origin, destination, show}) => {
     const map = useMap()
     const routesLib = useMapsLibrary('routes')
     const [directionService, setDirectionService] = useState()
@@ -19,21 +19,25 @@ const Directions = () => {
         if (!directionRenderer || !directionService) {return}
 
         const getDirection = async () => {
+            if (!show) {
+                return
+            }
+
             const response = await directionService.route({
-                origin: "11830 Jasper Ave, Edmonton, AB T5K 0N7",
-                destination: "9833 109 St NW, Edmonton, AB T5K 2E8",
+                origin: `${origin.lat} ${origin.lng}`,
+                destination: `${destination.lat} ${destination.lng}`,
                 travelMode: window.google.maps.TravelMode.DRIVING
             })
 
             directionRenderer.setDirections(response)
 
-            console.log(response.routes);
+            console.log(response.routes[0].overview_polyline);
             
         }      
         getDirection()
         
         
-    }, [directionRenderer, directionService])
+    }, [destination.lat, destination.lng, directionRenderer, directionService, origin.lat, origin.lng, show])
     
 
     return null

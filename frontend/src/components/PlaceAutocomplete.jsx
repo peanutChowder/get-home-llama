@@ -1,5 +1,4 @@
 import PropTypes from "prop-types"
-import { useState, useMemo } from "react"
 import {
     Combobox,
     ComboboxInput,
@@ -85,6 +84,11 @@ const PlacesAutocomplete = ({ setShowDirections, setDestination }) => {
 
 
 PlaceAutoComplete.propTypes = {
+    setDestination: PropTypes.func.isRequired,
+    setShowDirections: PropTypes.func.isRequired
+}
+
+PlacesAutocomplete.propTypes = {
     setDestination: PropTypes.func.isRequired,
     setShowDirections: PropTypes.func.isRequired
 }

@@ -3,6 +3,7 @@ import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps'
 
 import HamburgerMenu from "../components/HamburgerMenu"
 import Directions from "../components/Directions"
+import PlaceAutoComplete from "../components/PlaceAutocomplete"
 
 import './MainPage.css'
 
@@ -34,9 +35,10 @@ const MainPage = () => {
                             <Marker position={currLocation}/>
 
                             <Directions/>
-                        </Map>
+                        </Map>       
                     </div>
                 </APIProvider>
+                <PlaceAutoComplete/>
             </div>
         </div>
 

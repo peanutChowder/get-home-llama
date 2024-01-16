@@ -13,10 +13,8 @@ const HamburgerMenu = () => {
                 </div>  
             <div className="menu-items">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">about</a></li>
-                <li><a href="#">blogs</a></li>
-                <li><a href="#">portfolio</a></li>
-                <li><a href="#">contact</a></li>
+                <li><a href="#">Contacts</a></li>
+                <li><a href="#">Settings</a></li>
             </div>
             </div>
         </div>

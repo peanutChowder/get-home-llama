@@ -3,11 +3,11 @@
 :root {
   --nav-background: rgb(39, 48, 84);
   --background-secondary: rgb(14, 47, 99);
-  --global-background: rgb(9, 31, 66);
+  --background: rgb(9, 31, 66);
   --accent-secondary: rgb(52, 143, 235);
   --accent-primary: rgb(255,255,255);
 
-  background-color: var(--global-background);
+  background-color: var(--background);
 }
 
 * {

@@ -26,7 +26,7 @@ const MainPage = () => {
     }, [currLocation])
 
     return (
-        <div>
+        <>
             <HamburgerMenu/>
 
             <div id="main-page-content">
@@ -41,7 +41,7 @@ const MainPage = () => {
                     setDestination={setDestination}
                 />
             </div>
-        </div>
+        </>
 
     )
 }

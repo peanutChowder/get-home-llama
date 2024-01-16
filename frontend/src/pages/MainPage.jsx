@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
-import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps'
 
 import HamburgerMenu from "../components/HamburgerMenu"
-import Directions from "../components/Directions"
+import GoogleMap from "../components/GoogleMap"
 import PlaceAutoComplete from "../components/PlaceAutocomplete"
 
 import './MainPage.css'
@@ -31,18 +30,12 @@ const MainPage = () => {
             <HamburgerMenu/>
 
             <div id="main-page-content">
-                <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
-                    <div className="map-container">
-                        <Map zoom={zoom} center={currLocation}>
-                            <Marker position={currLocation}/>
-                            <Directions
-                                origin={currLocation}
-                                destination={destination}
-                                show={showDirections}
-                            />
-                        </Map>       
-                    </div>
-                </APIProvider>
+                <GoogleMap
+                    zoom={zoom}
+                    currLocation={currLocation}
+                    destination={destination}
+                    showDirections={showDirections}
+                />
                 <PlaceAutoComplete
                     setShowDirections={setShowDirections}
                     setDestination={setDestination}

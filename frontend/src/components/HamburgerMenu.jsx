@@ -11,8 +11,6 @@ const HamburgerMenu = () => {
                 <span className="line line2"></span>
                 <span className="line line3"></span>
                 </div>  
-            <div className="logo">
-            </div>
             <div className="menu-items">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">about</a></li>

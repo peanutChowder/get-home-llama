@@ -10,6 +10,8 @@ import "@reach/combobox/styles.css"
 import { useLoadScript } from "@react-google-maps/api"
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete"
 
+import "./PlaceAutocomplete.css"
+
 const libraries = ["places"]
 
 const PlaceAutoComplete = ({ setShowDirections, setDestination }) => {
@@ -62,13 +64,14 @@ const PlacesAutocomplete = ({ setShowDirections, setDestination }) => {
     }
 
     return (
-        <div>
+        <div className="combo-input-container">
             <Combobox onSelect={handleSelect}>
                 <ComboboxInput
                     value={value}
                     onChange={handleChange}
                     disabled={!ready}
-                    placeholder="address here"
+                    placeholder="Get home"
+                    className="combo-input"
                 />
                 <ComboboxPopover>
                     <ComboboxList>

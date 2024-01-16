@@ -70,7 +70,7 @@ const PlacesAutocomplete = ({ setShowDirections, setDestination }) => {
                     value={value}
                     onChange={handleChange}
                     disabled={!ready}
-                    placeholder="Get home"
+                    placeholder="where to?"
                     className="combo-input"
                 />
                 <ComboboxPopover>
@@ -81,6 +81,7 @@ const PlacesAutocomplete = ({ setShowDirections, setDestination }) => {
                     </ComboboxList>
                 </ComboboxPopover>
             </Combobox>
+            <button className="combo-submit">Get home</button>
         </div>
     )
 }

@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
+
 :root {
   --nav-background: rgb(39, 48, 84);
+  --global-background-secondary: rgb(14, 47, 99);
   --global-background: rgb(9, 31, 66);
+  --accent-secondary: rgb(52, 143, 235);
   --accent-primary: rgb(255,255,255);
 
   background-color: var(--global-background);

@@ -68,6 +68,7 @@ const PlacesAutocomplete = ({ setShowDirections, setDestination }) => {
             return
         }
 
+        // TODO: this is temporary sharing testing link
         const tempUrl = {
             title: "url",
             text: "Track my location",

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 import HamburgerMenu from "../components/HamburgerMenu"
 import GoogleMap from "../components/GoogleMap"
-import PlaceAutoComplete from "../components/PlaceAutocomplete"
+import AddressSubmit from "../components/AddressSubmit"
 
 import './MainPage.css'
 
@@ -36,7 +36,7 @@ const MainPage = () => {
                     destination={destination}
                     showDirections={showDirections}
                 />
-                <PlaceAutoComplete
+                <AddressSubmit
                     setShowDirections={setShowDirections}
                     setDestination={setDestination}
                 />

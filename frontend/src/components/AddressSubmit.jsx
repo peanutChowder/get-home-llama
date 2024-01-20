@@ -10,11 +10,11 @@ import "@reach/combobox/styles.css"
 import { useLoadScript } from "@react-google-maps/api"
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete"
 
-import "./PlaceAutocomplete.css"
+import "./AddressSubmit.css"
 
 const libraries = ["places"]
 
-const PlaceAutoComplete = ({ setShowDirections, setDestination }) => {
+const AddressSubmit = ({ setShowDirections, setDestination }) => {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
         libraries: libraries
@@ -87,7 +87,7 @@ const PlacesAutocomplete = ({ setShowDirections, setDestination }) => {
 }
 
 
-PlaceAutoComplete.propTypes = {
+AddressSubmit.propTypes = {
     setDestination: PropTypes.func.isRequired,
     setShowDirections: PropTypes.func.isRequired
 }
@@ -97,4 +97,4 @@ PlacesAutocomplete.propTypes = {
     setShowDirections: PropTypes.func.isRequired
 }
 
-export default PlaceAutoComplete
+export default AddressSubmit

@@ -60,7 +60,27 @@ const PlacesAutocomplete = ({ setShowDirections, setDestination }) => {
         })
 
         setShowDirections(true)
+    }
+
+    const handleAddressSubmit = () => {
+        if (!(navigator.canShare && navigator.share)) {
+            console.log('This browser does not support sharing');
+            return
+        }
+
+        const tempUrl = {
+            title: "url",
+            text: "Track my location",
+            "url": "google.com",
+        }
+
+        try {
+            navigator.share(tempUrl)
+        } catch (err) {
+            console.log(`Failed to share: ${err}`);    
+        }
         
+
     }
 
     return (
@@ -81,7 +101,10 @@ const PlacesAutocomplete = ({ setShowDirections, setDestination }) => {
                     </ComboboxList>
                 </ComboboxPopover>
             </Combobox>
-            <button className="combo-submit">Get home</button>
+            <button
+                className="combo-submit"
+                onClick={handleAddressSubmit}
+            >Get home</button>
         </div>
     )
 }

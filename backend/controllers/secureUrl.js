@@ -10,6 +10,11 @@ secureUrlRouter.get('/', async (request, response) => {
 secureUrlRouter.post("/", async (request, response) => {
     const newUrl = await generateRandString()
 
+    if (!(request.body.uid && request.body.lastLocation && request.body.polyline)) {
+        response.status(400).json({error: "Must provide uid, lastLocation, and polyline"})
+        return
+    }
+
     try {
         const secureUrl = new SecureUrl({
             url: newUrl,
@@ -22,7 +27,6 @@ secureUrlRouter.post("/", async (request, response) => {
         
     } catch (err) {
         logger.error(err)
-        response.status(400)
     }
 })
 

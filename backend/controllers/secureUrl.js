@@ -14,23 +14,30 @@ secureUrlRouter.post("/", async (request, response) => {
         response.status(400).json({error: "Must provide uid, lastLocation, and polyline"})
         return
     }
+    if (await SecureUrl.findOne({url: newUrl})) {
+        response.status(500).json({error: "Url already exists, try again"})
+        return
+    }
+
+    const secureUrl = new SecureUrl({
+        url: newUrl,
+        uid: request.body.uid,
+        lastLocation: request.body.lastLocation,
+        polyline: request.body.polyline
+    })
 
     try {
-        const secureUrl = new SecureUrl({
-            url: newUrl,
-            uid: request.body.uid,
-            lastLocation: request.body.lastLocation,
-            polyline: request.body.polyline
-        })
         result = await secureUrl.save()
         response.status(201).json(result)
         
     } catch (err) {
         logger.error(err)
+        response.status(500)
+        return
     }
 })
 
-secureUrlRouter.get('/all', async (request, response) => {
+secureUrlRouter.get('/allUrls', async (request, response) => {
     results = await SecureUrl.find({}, "url")
     response.status(200).json(results)
 })

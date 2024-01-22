@@ -2,6 +2,7 @@ const config = require('./utils/config')
 const logger = require('./utils/logger')
 const express = require('express')
 const app = express()
+const middleware = require('./utils/middleware')
 const mongoose = require('mongoose')
 
 // connect to db
@@ -13,6 +14,10 @@ mongoose.connect(config.MONGODB_SECUREURL_URI)
     .catch((error) => {
         logger.error("Error connecting to mongoDB", error.message)
     })
+
+app.use(express.json())
+app.use(middleware.requestLogger)
+
 
 // use controllers
 const mapRouter = require('./controllers/map')

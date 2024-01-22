@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const secureUrlSchema = new mongoose.Schema({
     url: String,
-    uid: String,
+    uid: {type: String, unique: true},
     lastLocation: [Number],
     polyline: String
 })

@@ -8,19 +8,22 @@ secureUrlRouter.get('/', async (request, response) => {
 })
 
 secureUrlRouter.post("/", async (request, response) => {
-    // TODO: replace values 
-    console.log(request.body.ooer)
-    
-    const test = {
-        url: "google.com",
-        uid: "abdgf213",
-        lastLocation: [1, 2, 3],
-        polyline: "abdsad123"
-    }
-    const testSecureUrl = new SecureUrl(test)
+    const newUrl = await generateRandString()
 
-    result = await testSecureUrl.save()
-    response.status(201).json(result)
+    try {
+        const secureUrl = new SecureUrl({
+            url: newUrl,
+            uid: request.body.uid,
+            lastLocation: request.body.lastLocation,
+            polyline: request.body.polyline
+        })
+        result = await secureUrl.save()
+        response.status(201).json(result)
+        
+    } catch (err) {
+        logger.error(err)
+        response.status(400)
+    }
 })
 
 secureUrlRouter.get('/all', async (request, response) => {

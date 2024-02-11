@@ -7,7 +7,7 @@ secureUrlRouter.get('/', async (request, response) => {
     return response.json("secureUrl test")
 })
 
-secureUrlRouter.post("/", async (request, response) => {
+secureUrlRouter.post("/newUrl", async (request, response) => {
     const newUrl = await generateRandString()
 
     if (!(request.body.uid && request.body.lastLocation && request.body.polyline)) {
